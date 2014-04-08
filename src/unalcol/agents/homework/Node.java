@@ -9,20 +9,18 @@ package unalcol.agents.homework;
  * @author windows
  */
 public class Node {
-    
-    public static final int OPEN = 0;
-    public static final int VISITED = 1;
-    public static final int CLOSED = 2;
-    
+
     private int x;
     private int y;
-    private int[] paths = {OPEN,OPEN,OPEN,OPEN};
-    private String key;
-    
-    public Node(int n_x, int n_y){
+    private Object data;
+    private Node down, next;
+
+    public Node(int n_x, int n_y, Object data) {
         this.x = n_x;
         this.y = n_y;
-        this.key = x+","+y;
+        this.data = data;
+        down = this;
+        next = this;
     }
 
     public int getX() {
@@ -33,15 +31,35 @@ public class Node {
         return y;
     }
 
-    public int getPaths(int path) {
-        return paths[path];
+    public void setDown(Node down) {
+        this.down = down;
     }
 
-    public String getKey() {
-        return key;
+    public void setNext(Node next) {
+        this.next = next;
     }
-    
-    public void changePaths(int path, int state){
-        paths[path] = state;
+
+    public Node getDown() {
+        return this.down;
+    }
+
+    public Node getNext() {
+        return this.next;
+    }
+
+    public int getCol() {
+        return this.y;
+    }
+
+    public int getRow() {
+        return this.x;
+    }
+
+    public Object getData() {
+        return data;
+    }
+
+    public void setData(Object data) {
+        this.data = data;
     }
 }
