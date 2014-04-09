@@ -26,7 +26,7 @@ public class SparseMatrix {
 		}
 	}
 	
-	public Node retriveData(int i, int j) {
+	public Data retriveData(int i, int j) {
 		Node mover = start;
 		if(!checkLimits(i, j))
 			return null;
@@ -37,7 +37,7 @@ public class SparseMatrix {
 		} while(mover.getRow() != i && mover.getRow() != 0);
 		
 		if(mover.getRow() == i && mover.getCol() == j)
-			return (Node) mover.getData();
+			return (Data) mover.getData();
 		return null;
 	}
 	
@@ -47,7 +47,7 @@ public class SparseMatrix {
 		return false;
 	}
 	
-	public boolean add(int i, int j, Node data) {
+	public boolean add(int i, int j, Data data) {
 		Node mover, newNode;
 		mover = start;
 		if(!checkLimits(i, j))
@@ -97,14 +97,14 @@ public class SparseMatrix {
 		return this.cols;
 	}
 	
-	public Node remove(int i, int j) {
+	public Data remove(int i, int j) {
 		if(!checkLimits(i, j))
 			return null;
 		if(retriveData(i, j) == null)
 			return null;
 		Node mover = start;
 		if(i == 0 || j == 0) {
-			Node temp = retriveData(i, j);
+			Data temp = retriveData(i, j);
 			add(i, j, null);
 			return temp;
 		}
@@ -126,7 +126,7 @@ public class SparseMatrix {
 		mover.setDown(temp.getDown());
 		
 		
-		return (Node) temp.getData();
+		return (Data) temp.getData();
 	}
 	
 	public String toString() {
