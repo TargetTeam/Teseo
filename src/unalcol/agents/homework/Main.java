@@ -14,6 +14,5 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        SparseMatrix matix = new SparseMatrix(1, 1);
     }
 }
