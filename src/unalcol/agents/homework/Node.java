@@ -13,7 +13,7 @@ public class Node {
     private int x;
     private int y;
     private Object data;
-    private Node down, next;
+    private Node down, next, up, prev;
 
     public Node(int n_x, int n_y, Object data) {
         this.x = n_x;
@@ -21,6 +21,8 @@ public class Node {
         this.data = data;
         down = this;
         next = this;
+        up = this;
+        prev = this;
     }
 
     public int getX() {
@@ -62,4 +64,21 @@ public class Node {
     public void setData(Object data) {
         this.data = data;
     }
+
+    public Node getUp() {
+        return up;
+    }
+
+    public void setUp(Node up) {
+        this.up = up;
+    }
+
+    public Node getPrev() {
+        return prev;
+    }
+
+    public void setPrev(Node prev) {
+        this.prev = prev;
+    }
+    
 }
