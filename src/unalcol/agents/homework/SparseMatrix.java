@@ -12,12 +12,24 @@ public class SparseMatrix {
 
     public Data retriveData(int i, int j) {
         Node mover = start;
-        while (mover.getCol() != j) {
-            mover = mover.getNext();
+        if(j<0){
+            while (mover.getCol() != j) {
+                mover = mover.getPrev();
+            }
+        }else{
+            while (mover.getCol() != j) {
+                mover = mover.getNext();
+            }
         }
-        do {
-            mover = mover.getDown();
-        } while (mover.getRow() != i && mover.getRow() != 0);
+        if(i<0){
+            do {
+                mover = mover.getUp();
+            } while (mover.getRow() != i && mover.getRow() != 0);
+        }else{
+             do {
+                mover = mover.getDown();
+            } while (mover.getRow() != i && mover.getRow() != 0);
+        }
 
         if (mover.getRow() == i && mover.getCol() == j) {
             return (Data) mover.getData();
